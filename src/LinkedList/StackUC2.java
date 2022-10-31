@@ -1,9 +1,9 @@
 package LinkedList;
 
-public class StackUC1 {
+public class StackUC2 {
     private static LinkedList head;
 
-    public StackUC1() {
+    public StackUC2() {
         this.head = head;
     }
 
@@ -25,6 +25,12 @@ public class StackUC1 {
         return head;
     }
 
+    public LinkedList pop(LinkedList head) {
+        LinkedList tempNode = this.head;
+        this.head = head.getNext();
+        return tempNode;
+    }
+
     public void printLinkedList() {
         System.out.println("My Nodes: " + head);
     }
@@ -34,13 +40,15 @@ public class StackUC1 {
         MyNode<Integer> firstNode = new MyNode<Integer>(70);
         MyNode<Integer> secondNode = new MyNode<Integer>(30);
         MyNode<Integer> thirdNode = new MyNode<Integer>(56);
-        StackUC1 stack = new StackUC1();
+        StackUC2 stack = new StackUC2();
         stack.push(firstNode);
-        System.out.println("First Node added : " + stack.peak());
         stack.push(secondNode);
-        System.out.println("Second Node added: " + stack.peak());
         stack.push(thirdNode);
-        System.out.println("Third Node added: " + stack.peak());
+        stack.peak();
+        stack.printLinkedList();
+        System.out.println(stack.pop(thirdNode));
+        System.out.println(stack.pop(secondNode));
+        System.out.println(stack.pop(firstNode));
         stack.printLinkedList();
     }
 }
