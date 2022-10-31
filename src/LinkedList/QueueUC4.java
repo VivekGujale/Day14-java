@@ -1,6 +1,6 @@
 package LinkedList;
 
-public class QueueUC3 {
+public class QueueUC4 {
     public static LinkedList head;
 
     public void append(LinkedList newNode) {
@@ -14,8 +14,11 @@ public class QueueUC3 {
             tempNode.setNext(newNode);
         }
     }
-    public void enqueue(LinkedList newNode) {
-        append(newNode);
+
+    public LinkedList dequeue(LinkedList head) {
+        LinkedList tempNode = this.head;
+        this.head = head.getNext();
+        return tempNode;
     }
 
     public void printLinkedList() {
@@ -27,10 +30,13 @@ public class QueueUC3 {
         MyNode<Integer> firstNode = new MyNode<Integer>(56);
         MyNode<Integer> secondNode = new MyNode<Integer>(30);
         MyNode<Integer> thirdNode = new MyNode<Integer>(70);
-        QueueUC3 queue = new QueueUC3();
-        queue.enqueue(firstNode);
-        queue.enqueue(secondNode);
-        queue.enqueue(thirdNode);
+        QueueUC4 queue = new QueueUC4();
+        queue.append(firstNode);
+        queue.append(secondNode);
+        queue.append(thirdNode);
         queue.printLinkedList();
+        System.out.println(queue.dequeue(firstNode));
+        System.out.println(queue.dequeue(secondNode));
+        System.out.println(queue.dequeue(thirdNode));
     }
 }
