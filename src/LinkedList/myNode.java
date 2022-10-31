@@ -4,6 +4,10 @@ class MyNode<T> implements LinkedList<T> {
     private T key;
     private LinkedList<T> next;
 
+    public MyNode(){
+
+    }
+
     public MyNode(T key) {
 
         this.key = key;
