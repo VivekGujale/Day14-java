@@ -1,6 +1,6 @@
 package LinkedList;
 
-public class LinkedListUC8 {
+public class LinkedListUC9 {
     public static LinkedList head;
 
     public void append(LinkedList newNode) {
@@ -27,6 +27,24 @@ public class LinkedListUC8 {
         }
     }
 
+    public LinkedList deleteNode(int key) {
+
+        LinkedList previousNode = search(key);
+
+        if (previousNode != null) {
+
+            LinkedList tempNode = head;
+            while (tempNode != null && tempNode.getNext() != previousNode) {
+                tempNode = tempNode.getNext();
+            }
+            tempNode.setNext(previousNode.getNext());
+            return previousNode;
+        } else {
+            System.out.println("Key Node Found");
+            return null;
+        }
+    }
+
     public LinkedList search(int key) {
         LinkedList tempNode = head;
         boolean flag = false;
@@ -45,6 +63,15 @@ public class LinkedListUC8 {
         }
     }
 
+    public int size() {
+        int numOfNode = 0;
+        LinkedList tempNode = this.head;
+        while (tempNode != null) {
+            tempNode = tempNode.getNext();
+            numOfNode++;
+        }
+        return numOfNode;
+    }
 
     public void printLinkedList() {
         System.out.println("My Nodes: " + head);
@@ -56,7 +83,7 @@ public class LinkedListUC8 {
         MyNode<Integer> secondNode = new MyNode<Integer>(30);
         MyNode<Integer> thirdNode = new MyNode<Integer>(70);
         MyNode<Integer> nextNode = new MyNode<Integer>(40);
-        LinkedListUC8 myLinkedList = new LinkedListUC8();
+        LinkedListUC9 myLinkedList = new LinkedListUC9();
         myLinkedList.append(firstNode);
         myLinkedList.append(secondNode);
         myLinkedList.append(thirdNode);
@@ -66,5 +93,13 @@ public class LinkedListUC8 {
         System.out.println("New inserted node is : " + nextNode);
         myLinkedList.insertNode(previousNode, nextNode);
         myLinkedList.printLinkedList();
+        System.out.println();
+        LinkedList deletedNode = myLinkedList.deleteNode(40);
+        System.out.println("The deleted node is : " + deletedNode.getKey());
+        myLinkedList.printLinkedList();
+        System.out.println();
+        int sizeOfLinkedList = myLinkedList.size();
+        System.out.println("The size of the linked list is : " + sizeOfLinkedList);
     }
 }
+
